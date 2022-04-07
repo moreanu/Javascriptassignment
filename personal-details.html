@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <title>Personal Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stysheet" href="/css/form.css" />
+  <script src="javascript/validation.js" defer></script>
+  <script>
+    function validateData() {
+      var email = document.getElementById("email").value;
+      var validEmail = IsValidEmail(email);
+      var validateMobileNo = isValidateMobileNo();
+      if (!validEmail && !validateMobileNo) {
+        alert("Please enter valid mobile and email")
+        return false;
+      } else if (!validEmail) {
+        alert("Please enter valid email")
+        return false;
+      } else if (!validateMobileNo) {
+        alert("Please enter valid mobile")
+        return false;
+      } else {
+        sessionStorage.setItem("name", document.getElementById("name").value);
+        sessionStorage.setItem("email", document.getElementById("email").value);
+        sessionStorage.setItem("mobile", document.getElementById("mobile").value);
+        window.open("thankyou.html")
+        return true;
+      }
+    }
+  </script>
+ 
+</head>
+
+<body>
+
+  <div>
+    <h2>Personal Details</h2>
+    <form onsubmit="return validateData();" method="GET">
+      <div>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter Name" name="name" pattern="[A-Za-z]{4,} [A-Za-z]{4,}"
+          title="Minimum 4 letters" value="" required />
+      </div>
+      </br>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Enter email" name="email" value="" required />
+      </div>
+      </br>
+      <div>
+        <label for="mobile">Mobile No:</label>
+        <input type="tel" id="mobile" placeholder="Enter Mobile number" name="mobile" value="" required />
+        <label id="operator"></label>&nbsp;&nbsp;<label id="state"></label>
+      </div>
+      </br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+</body>
+
+</html>
