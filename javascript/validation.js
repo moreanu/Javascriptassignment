@@ -3,7 +3,7 @@ function IsValidEmail(email) {
     if (email.indexOf("@") == -1)//Condition to check @ if present it returns positive value else returns -1
         return false;
 
-    var parts = email.split("@");//Here string is spited and stored in array 
+    var parts = email.split("@");//Here string is splited and stored in array 
     var dot = parts[1].indexOf(".");//1 index is for right side of @.
     var len = parts[1].length;
     var dotSplits = parts[1].split(".");//Here string splitted as per the dot position. 
@@ -84,7 +84,7 @@ function mobileFormat(input) {
     // Place the remaining input to ten characters, to show the phone number format
     input = input.substring(0, 10);
     console.log(input);
-
+     
     var size = input.length;
     console.log("size:" + size)
     if (size == 0) {
@@ -95,7 +95,7 @@ function mobileFormat(input) {
         //Next 3 digit shows the States
         var stateCode = input.substring(3, 6);
         console.log("stateCode" + stateCode);
-        document.getElementById("state").innerHTML = states[stateCode];
+        document.getElementById("state").innerHTML = states[stateCode];//because of no property we are accessing the state with squre bracket
         input = '(' + input.substring(0, 3) + ') - ' + stateCode;
     } else {
         input = '(' + input.substring(0, 3) + ') - ' + input.substring(3, 6) + ' - ' + input.substring(6, 10);
@@ -103,7 +103,7 @@ function mobileFormat(input) {
     }
     return input;
 }
-//Event Listener on keyup 
+//Event Listener on keyup for mobile no
 document.getElementById('mobile').addEventListener('keyup', function (evt) {
     var phoneNumber = document.getElementById('mobile');
     phoneNumber.value = mobileFormat(phoneNumber.value);
