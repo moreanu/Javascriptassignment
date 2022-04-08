@@ -1,39 +1,22 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-</head>
-
+    <script src="javascript/thankyoupage.js" defer></script>
 <body>
     <h1>Thank you</h1>
-    <P>Dear ,</P><label id="name"></label>
+    <P>Dear <label id="name"></label>,</P>
     <P>Thank you for inquiry. A 4 digit verification number has been sent to <label id="mobile"></label> ,please
         enter in the following box and submit for conformation.
     </P>
     <h4>
         <lable for="OTPno">Enter OTP</lable>
-        <input type="number" id="otp" value="" required />
+        <input type="text" maxlength="4" id="otp" value="" required />
+        <label  style="color: red;" for="attempts" id="attempt"></label>
     </h4>
-    <button onclick="validateData()">Validate</button>
+    <button id="validate_btn" onclick="validateData()" style="background-color: mediumspringgreen;">Validate</button>
 </body>
-<script>
-    //Math.floor function for print 4 digit random no to the console 
-     var val = Math.floor(1000 + Math.random() * 9000);
-        console.log(val);
-        document.getElementById("name").innerHTML = sessionStorage.getItem("name");
-        document.getElementById("mobile").innerHTML = sessionStorage.getItem("mobile");
-     //For redirect page 
-    function validateData() {
-        if (document.getElementById("otp").value == val) {
-            window.open("http://pixel6.co/");
-        }
-        else {
-            window.open("pagenotfound.html")
-        }
-    }
-  </script>
+</head>
 </html>
